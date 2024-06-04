@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { auth } from "../middleware/auth";
 import MovieController from "../controller/movie";
-import { adminPermission } from "src/middleware/admin-permission";
+import { adminPermission } from "../middleware/admin-permission";
 
 export const MovieRoute = Router();
 

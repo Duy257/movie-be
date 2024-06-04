@@ -11,7 +11,7 @@ class AuthController {
           error: "Thiếu thông tin",
         });
 
-      const checkUsername = await User.findOne({ email } );
+      const checkUsername = await User.findOne({ email });
       if (checkUsername) {
         return res.status(500).send({
           error: "Tài khoản đã tồn tại!",
@@ -22,10 +22,9 @@ class AuthController {
           password: hashPassword,
           name,
           email,
+          role: "user",
         };
-        const user = await User.create({
-          data,
-        });
+        await User.create(data);
         return res.status(200).json({ success: true });
       }
     } catch (error) {
@@ -41,7 +40,7 @@ class AuthController {
       return res.status(500).send({
         error: "Thiếu thông tin",
       });
-    const user = await User.findOne({email});
+    const user = await User.findOne({ email });
     if (!user) {
       return res.status(500).json({
         message: "Tài khoản hoặc mật khẩu sai",
@@ -52,6 +51,7 @@ class AuthController {
         let payload = {
           name: user.name,
           idUser: user.id,
+          role: user.role,
         };
         const generateToken = Token.sign({ payload });
         return res.status(200).json({
