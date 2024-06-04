@@ -1,1 +1,1 @@
-# movie-be
+run project: yarn dev
