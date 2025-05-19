@@ -13,6 +13,10 @@ app.use(bodyParser.json());
 app.use(express.json());
 app.use("", routes);
 
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
+
 app.listen(process.env.PORT, () => {
   console.log(`Running http://localhost:${process.env.PORT}`);
 });
