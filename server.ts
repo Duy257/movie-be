@@ -17,6 +17,6 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-app.listen(process.env.PORT, () => {
-  console.log(`Running http://localhost:${process.env.PORT}`);
+app.listen(4000, '0.0.0.0', () => {
+  console.log(`Server đang chạy tại http://0.0.0.0:${4000}`);
 });
